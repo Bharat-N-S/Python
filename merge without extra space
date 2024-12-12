@@ -1,0 +1,29 @@
+class Solution:
+    def mergeArrays(self, a, b):
+        i, j = 0, 0
+        result = []
+    
+        # Merge the two arrays into the result list
+        while i < len(a) and j < len(b):
+            if a[i] < b[j]:
+                result.append(a[i])
+                i += 1
+            else:
+                result.append(b[j])
+                j += 1
+    
+        # Append remaining elements from a[] if any
+        while i < len(a):
+            result.append(a[i])
+            i += 1
+    
+        # Append remaining elements from b[] if any
+        while j < len(b):
+            result.append(b[j])
+            j += 1
+    
+        # Now split the merged result into two arrays with specific sizes
+        a[:] = result[:len(a)]  # The first `n` elements go to `a`, where `n` is the original size of `a[]`
+        b[:] = result[len(a):]  # The remaining elements go to `b`
+    
+        return a, b
