@@ -27,3 +27,26 @@ class Solution:
         b[:] = result[len(a):]  # The remaining elements go to `b`
     
         return a, b
+
+
+
+# two pointer method
+
+
+class Solution:
+    def mergeArrays(self,a, b):
+        n, m = len(a), len(b)
+        i, j = n - 1, 0  # Start from the end of a[] and beginning of b[]
+
+    # Swap elements if `a[i]` is greater than `b[j]`
+        while i >= 0 and j < m:
+            if a[i] > b[j]:
+                a[i], b[j] = b[j], a[i]
+            i -= 1
+            j += 1
+    
+        # Sort both arrays to maintain the sorted order
+        a.sort()
+        b.sort()
+    
+        return a, b
